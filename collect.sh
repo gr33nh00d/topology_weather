@@ -1,12 +1,14 @@
 #!/bin/bash
 
-echo "hello"
 cityID=0
-for i in {1..2}
+F="$1"
+P="$2"
+echo "$F"
+echo "$P"
+for i in {1..144}
 do
-  # go run callOpenmap.go $i > output.txt
   cityID="$(sed -n $i'p' cityIDs.txt)"
-  echo $cityID
-  # go run /home/topology_weather/callOpenmap.go $cityID > output.txt
-  # go run parse.go >> data.txt
+  go run $F $cityID > output.txt
+  go run $P >> data.txt
+  echo $i
 done
